@@ -11,12 +11,12 @@
 
 </head>
 <body>
-<header th:replace="/share/header :: header--main-page"></header>
+<header th:replace="/share/header/landing-header :: header--main-page"></header>
 
 <section id="stats" class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em th:text="${sumOfBags}"></em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -24,7 +24,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em th:text="${sumOfGifts}"></em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -83,54 +83,24 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
+            <li>
 
-            <li th:each="institution, iterStat: ${institunions}">
-                <div class="col">
+                <div class="col" th:each="institution, iterStat: ${institunions}"
+                     th:if="${iterStat.index} < ${institunions.size()/2}">
+                    <div class="title" th:text='|Fundacja "${institution.name}"|'></div>
 
-                    <div class="title" th:if="${iterStat.odd}"
-                     th:text="|Fundajca ${institution.name}|"></div>
-
-                    <div class="subtitle" th:if="${iterStat.odd}"
-                         th:text="|Fundajca ${institution.description}|"></div>
+                    <div class="subtitle" th:text='|Fundajca "${institution.description}"|'></div>
                 </div>
-
-
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja "Dbam o Zdrowie"</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>-->
-<!--                </div>-->
-
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja "A kogo"</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>-->
-<!--                </div>-->
             </li>
 
-
-
-
             <li>
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja "Dbam o Zdrowie"</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>-->
-<!--                </div>-->
 
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja "A kogo"</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>-->
-<!--                </div>-->
-<!--            </li>-->
+                <div class="col" th:each="institution, iterStat: ${institunions}"
+                     th:if="${iterStat.index} >= ${institunions.size()/2}">
+                    <div class="title" th:text='|Fundacja "${institution.name}"|'></div>
 
-<!--            <li>-->
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja “Dla dzieci"</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>-->
-<!--                </div>-->
-<!--                <div class="col">-->
-<!--                    <div class="title">Fundacja “Bez domu”</div>-->
-<!--                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>-->
-<!--                </div>-->
-
+                    <div class="subtitle" th:text='|Fundajca "${institution.description}"|'></div>
+                </div>
             </li>
 
         </ul>
@@ -140,6 +110,6 @@
 
 
 <footer th:replace="/share/footer"></footer>
-<!--<script th:replace="/share/script"></script>-->
+<script th:replace="/share/script"></script>
 </body>
 </html>

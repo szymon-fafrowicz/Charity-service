@@ -2,12 +2,14 @@ package pl.coderslab.charity.persistence.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.persistence.dao.DonationRepository;
 import pl.coderslab.charity.persistence.entity.Donation;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class DonationServiceImpl implements DonationService {
     DonationRepository donationRepository;
 
@@ -25,4 +27,15 @@ public class DonationServiceImpl implements DonationService {
     public void save(Donation donation) {
         donationRepository.delete(donation);
     }
+
+    @Override
+    public int sumOfReceivedBags() {
+        return donationRepository.sumOfReceivedBags() !=null ? donationRepository.sumOfReceivedBags() : 0;
+    }
+
+    @Override
+    public Object sumOfGifts() {
+        return donationRepository.sumOfDonations() !=null ? donationRepository.sumOfDonations() : 0;
+    }
+
 }

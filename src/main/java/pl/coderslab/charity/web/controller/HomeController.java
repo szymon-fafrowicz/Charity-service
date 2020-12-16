@@ -4,27 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.persistence.entity.Institution;
+import pl.coderslab.charity.persistence.service.DonationService;
 import pl.coderslab.charity.persistence.service.InstitutionService;
-
-import java.util.List;
 
 
 @Controller
 public class HomeController {
 
     private InstitutionService institutionService;
+    private DonationService donationService;
 
     @Autowired
-    public HomeController(InstitutionService institutionService) {
+    public HomeController(InstitutionService institutionService, DonationService donationService) {
         this.institutionService = institutionService;
+        this.donationService = donationService;
     }
 
     @RequestMapping("/")
     public String homeAction(Model model) {
-        List<Institution> institutions = institutionService.findAll();
-        model.addAttribute("institunions", institutions);
-
+        model.addAttribute("institunions", institutionService.findAll());
+        model.addAttribute("sumOfBags", donationService.sumOfReceivedBags());
+        model.addAttribute("sumOfGifts", donationService.sumOfGifts());
         return "index";
     }
 }

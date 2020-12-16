@@ -24,13 +24,16 @@ public class Donation {
     @Size(min = 1, max = Integer.MAX_VALUE)
     private Integer quantity;
 
-    @ManyToMany
     @NotEmpty
+    @ManyToMany
+    @JoinTable(name = "donations_categories",
+            joinColumns = @JoinColumn(name = "donation_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "institution_id")
-    @NotNull
     private Institution institution;
 
     @NotBlank

@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -21,4 +23,8 @@ public class Institution {
 
     @NotBlank
     private String description;
+
+    @OneToMany(mappedBy = "institution", cascade = CascadeType.REMOVE)
+    private List<Donation> donation = new ArrayList<>();
+
 }

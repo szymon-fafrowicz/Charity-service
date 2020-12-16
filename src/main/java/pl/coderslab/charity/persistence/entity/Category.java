@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,4 +20,7 @@ public class Category {
 
     @NotBlank
     private String name;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Donation> donations = new ArrayList<>();
 }

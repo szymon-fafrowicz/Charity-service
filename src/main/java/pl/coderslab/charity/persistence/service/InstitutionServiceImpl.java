@@ -2,12 +2,15 @@ package pl.coderslab.charity.persistence.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.persistence.dao.InstitutionRepository;
 import pl.coderslab.charity.persistence.entity.Institution;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
+@Transactional
 public class InstitutionServiceImpl implements InstitutionService {
     InstitutionRepository institutionRepository;
 

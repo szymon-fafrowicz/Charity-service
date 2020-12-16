@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<nav th:fragment="nav" class="container container--70">
+    <ul class="nav--actions">
+
+        <li sec:authorize="isAnonymous()"><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
+        <li sec:authorize="isAnonymous()"><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+
+
+        <li sec:authorize="isAuthenticated()" class="logged-user">
+            Witaj <span sec:authentication="name"></span>
+            <ul class="dropdown">
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Moje zbiórki</a></li>
+                <li><a href="#">Wyloguj</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul th:fragment="menu" class="nav--actions">
+        <li><a href="" class="btn btn--without-border active">Start</a></li>
+        <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
+        <li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
+        <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+        <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>
