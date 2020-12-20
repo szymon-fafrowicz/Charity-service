@@ -32,6 +32,6 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public void save(Institution institution) {
-        institutionRepository.delete(institution);
+        institutionRepository.save(institution);
     }
 }

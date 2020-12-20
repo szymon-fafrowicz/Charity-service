@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.persistence.dao.CategoryRepository;
 import pl.coderslab.charity.persistence.entity.Category;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +26,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void save(Category category) {
-        categoryRepository.delete(category);
+        categoryRepository.save(category);
+    }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
     }
 }

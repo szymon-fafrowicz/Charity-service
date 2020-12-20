@@ -3,6 +3,7 @@ package pl.coderslab.charity.persistence.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -21,7 +22,8 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Size(min = 1, max = Integer.MAX_VALUE)
+    @Min(1)
+    @Max(Integer.MAX_VALUE)
     private Integer quantity;
 
     @NotEmpty
@@ -45,7 +47,11 @@ public class Donation {
     @NotBlank
     private String zipCode;
 
+
+    private String phoneNumber;
+
     @Future
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     @NotNull
@@ -53,4 +59,22 @@ public class Donation {
 
     @Length(max = 200)
     private String pickUpComment;
+
+
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", categories=" + categories +
+                ", institution=" + institution +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", pickUpDate=" + pickUpDate +
+                ", pickUpTime=" + pickUpTime +
+                ", pickUpComment='" + pickUpComment + '\'' +
+                '}';
+    }
 }

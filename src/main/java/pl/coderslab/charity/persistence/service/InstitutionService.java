@@ -8,9 +8,9 @@ import java.util.Optional;
 
 
 public interface InstitutionService {
-    public Optional<Institution> findById(long id);
+    Optional<Institution> findById(long id);
 
-    public List<Institution> findAll();
+    List<Institution> findAll();
 
-    public void save(Institution institution);
+    void save(Institution institution);
 }

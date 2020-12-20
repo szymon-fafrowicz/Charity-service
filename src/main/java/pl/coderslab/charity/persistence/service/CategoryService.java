@@ -2,11 +2,14 @@ package pl.coderslab.charity.persistence.service;
 
 import pl.coderslab.charity.persistence.entity.Category;
 
+import java.util.List;
 import java.util.Optional;
 
 
 public interface CategoryService {
-    public Optional<Category> findById(long id);
+    Optional<Category> findById(long id);
 
-    public void save(Category category);
+    void save(Category category);
+
+    List<Category> findAll();
 }

@@ -83,27 +83,23 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
+            <th:block th:each="institution, iterStat : ${institutions}">
+                <li th:if="${iterStat.odd}">
+                    <div class="col" th:if="${(iterStat.index)<institutions.size() }">
+                        <div class="title" th:text= "|Fundacja ${institutions.get(iterStat.index).getName()}|"></div>
+                        <div class="subtitle" th:text="${institutions.get(iterStat.index).getDescription()}"></div>
+                    </div>
+                    <div class="col" th:if="${iterStat.index+1<institutions.size()}">
+                        <div class="title" th:text= "|Fundacja ${institutions.get(iterStat.index+1).getName()}|"></div>
+                        <div class="subtitle" th:text="${institutions.get(iterStat.index+1).getDescription()}"></div>
+                    </div>
+                    <div class="col" th:if="${iterStat.index+1==institutions.size()}">
 
-                <div class="col" th:each="institution, iterStat: ${institunions}"
-                     th:if="${iterStat.index} < ${institunions.size()/2}">
-                    <div class="title" th:text='|Fundacja "${institution.name}"|'></div>
-
-                    <div class="subtitle" th:text='|Fundajca "${institution.description}"|'></div>
-                </div>
-            </li>
-
-            <li>
-
-                <div class="col" th:each="institution, iterStat: ${institunions}"
-                     th:if="${iterStat.index} >= ${institunions.size()/2}">
-                    <div class="title" th:text='|Fundacja "${institution.name}"|'></div>
-
-                    <div class="subtitle" th:text='|Fundajca "${institution.description}"|'></div>
-                </div>
-            </li>
-
+                    </div>
+                </li>
+            </th:block>
         </ul>
+
     </div>
 
 </section>

@@ -25,7 +25,7 @@ public class DonationServiceImpl implements DonationService {
 
     @Override
     public void save(Donation donation) {
-        donationRepository.delete(donation);
+        donationRepository.save(donation);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public Object sumOfGifts() {
+    public Object sumOfDonations() {
         return donationRepository.sumOfDonations() !=null ? donationRepository.sumOfDonations() : 0;
     }
 
