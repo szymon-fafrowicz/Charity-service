@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html" charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <style th:replace="/share/style"></style>
+
+</head>
+<body>
+<header class="header--form-page">
+<nav th:replace="/share/header/nav :: nav" class="container container--70"></nav>
+
+<div class="slogan container container--90">
+    <h2>
+        Dziękujemy za przesłanie formularza.
+        Na maila prześlemy wszelkie informacje o odbiorze.
+    </h2>
+</div>
+</header>
+
+<footer th:replace="/share/footer"></footer>
+<script th:replace="/share/script"></script>
+</body>
+</html>

@@ -170,25 +170,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 let quantity = document.querySelector("div[data-step='2']").querySelector("input");
-                let organization = document.querySelector("div[data-step='3']").querySelector("input");
+                let organization = document.querySelector("input[type=radio][name=institution]:checked").parentElement.querySelector("div.title");
+                let categories = document.querySelectorAll("input[type=checkbox][name=categories]:checked");
                 let addressInputs = document.getElementById("addressData").querySelectorAll("input");
                 let termInputs = document.getElementById("termData").querySelectorAll("input");
                 let comment = document.getElementById("termData").querySelector("textarea");
 
                 let addressData = document.getElementById('addressData-ul');
                 let termData = document.getElementById('termData-ul');
-                let bagsData = document.getElementById('bagsData');
-                let institutionData = document.getElementById('institutionData');
+                let bagsCategoriesData = document.getElementById('bagsData');
+                let organizationData = document.getElementById('institutionData');
+
+
+                console.log(categories);
+                let bags = 'worków';
+                let group1 = ['0', '1', '5', '6', '7', '8', '9'];
+                let group2 = ['2', '3', '4'];
 
                 if (quantity.value == 1) {
-                    bagsData.innerText = quantity.value + ' worek ubrań w dobrym stanie dla dzieci';
-                } else if (quantity.value >= 2 && quantity.value <= 4) {
-                    bagsData.innerText = quantity.value + ' worki ubrań w dobrym stanie dla dzieci';
-                } else if ((quantity.value == 0 || quantity.value > 4)){
-                    bagsData.innerText = quantity.value + ' worków ubrań w dobrym stanie dla dzieci';
+                    bags = ' worek';
+                } else if ((quantity.value == 0 || quantity.value > 4 && quantity.value <= 21)) {
+                    bags = ' worków';
+                } else if (group1.includes(quantity.value.slice(-1))) {
+                    bags = ' worków';
+                } else if (group2.includes(quantity.value.slice(-1))) {
+                    bags = ' worki';
                 }
 
-                    institutionData.innerText = 'Dla fundacji "' + institutionData.value + '" w Warszawie';
+                bagsCategoriesData.innerText = quantity.value + bags + ' rzeczy z kategorii:';
+
+                for (let i = 0; i < categories.length; i++) {
+                    bagsCategoriesData.innerHTML += '<br> &nbsp; - ' + categories[i].parentElement.querySelector("span.description").innerText;
+                }
+
+                organizationData.innerText = 'Dla fundacji "' + organization.innerText + '" w Warszawie';
 
                 addressData.innerText = '';
                 termData.innerText = '';
