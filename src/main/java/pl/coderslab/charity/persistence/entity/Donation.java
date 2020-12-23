@@ -3,6 +3,7 @@ package pl.coderslab.charity.persistence.entity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -22,8 +23,9 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Min(1)
-    @Max(Integer.MAX_VALUE)
+
+    @NotNull(message= "quantity may not be empty")
+    @Range(min = 1, max = Integer.MAX_VALUE)
     private Integer quantity;
 
     @NotEmpty
@@ -50,6 +52,7 @@ public class Donation {
 
     private String phoneNumber;
 
+    @NotNull
     @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;

@@ -56,13 +56,13 @@ public class DonationController {
 
         donationService.save(donation);
 
-//        try {
-//            donationService.save(donation);
-//        } catch (RuntimeException e) {
-//            System.out.println(e.getMessage());
-//            model.addAttribute("message", "Operation failed.");
-//            return "form";
-//        }
+        try {
+            donationService.save(donation);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+            model.addAttribute("message", "Operation failed.");
+            return "form";
+        }
         return "form-confirmation";
     }
 }
