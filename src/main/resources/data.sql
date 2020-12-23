@@ -10,3 +10,6 @@ insert into categories (name) values ('ubrania, do wyrzucenia');
 insert into categories (name) values ('zabawki');
 insert into categories (name) values ('książki');
 insert into categories (name) values ('inne');
+
+insert into roles(role) value ('ROLE_ADMIN');
+insert into roles(role) value ('ROLE_USER');
