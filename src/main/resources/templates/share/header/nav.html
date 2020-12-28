@@ -7,25 +7,16 @@
     <ul class="nav--actions">
 
         <li sec:authorize="isAnonymous()"><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-        <li sec:authorize="isAnonymous()"><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
 
 
         <li sec:authorize="isAuthenticated()" class="logged-user">
-            Witaj <span sec:authentication="name"></span>
+            Witaj <span sec:authentication="principal.user.firstName"></span>
             <ul class="dropdown">
                 <li><a href="#">Profil</a></li>
                 <li><a href="#">Moje zbiórki</a></li>
                 <li>
                     <a href="/logout">Wyloguj</a>
-
-<!--                    <form method="post" action="/logout">-->
-<!--                        <button style=" background: transparent!important;-->
-<!--                                        border: none;-->
-<!--                                        padding: 0!important;-->
-<!--                                        cursor: pointer;"-->
-<!--                                type="submit">Wyloguj</button>-->
-<!--                    </form>-->
-
                 </li>
             </ul>
         </li>

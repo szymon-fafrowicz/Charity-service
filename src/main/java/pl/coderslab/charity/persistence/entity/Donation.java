@@ -49,7 +49,7 @@ public class Donation {
     @NotBlank
     private String zipCode;
 
-
+    @NotBlank
     private String phoneNumber;
 
     @NotNull

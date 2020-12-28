@@ -1,5 +1,6 @@
 package pl.coderslab.charity.security;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,8 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public FilterRegistrationBean<AuthFilter> loggingFilter(){
+        FilterRegistrationBean<AuthFilter> registrationBean
+                = new FilterRegistrationBean<>();
 
+        registrationBean.setFilter(new AuthFilter());
+        registrationBean.addUrlPatterns("/register", "/login");
 
+        return registrationBean;
+    }
 
 
     @Override
@@ -31,12 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin()
                     .loginPage("/login")
-                    .loginProcessingUrl("/perform_login")
                     .failureUrl("/login?error=true")
                 .and()
                     .logout()
                     .logoutSuccessUrl("/")
-                    .permitAll()
                 .and()
                     .exceptionHandling()
                     .accessDeniedPage("/403");

@@ -35,7 +35,7 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form th:object="${donation}" method="post" th:action="@{/form}">
+        <form th:object="${donation}" th:method="post" th:action="@{/form}">
 
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
@@ -49,9 +49,8 @@
                         <span class="description" th:text="${category.name}"></span>
                     </label>
                 </div>
-                <div class="alert-primary" th:if="${#fields.hasErrors('categories')}" th:errors="*{categories}">
-                    Categories
-                    Error
+                <div class="alert-danger" th:if="${#fields.hasErrors('categories')}" th:errors="*{categories}">
+                    Categories Error
                 </div>
 
                 <div class="alert-primary" th:if="${message}" th:text="${message}"> </div>
@@ -68,9 +67,9 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" th:field="*{quantity}"/>
+                        <input type="number" name="bags" step="1"  th:field="*{quantity}"/>
                     </label>
-                    <span class="alert-primary" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity
+                    <span class="alert-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity
                         Error</span>
                 </div>
 
@@ -96,7 +95,7 @@
                     </label>
                 </div>
 
-                <span class="alert-primary" th:if="${#fields.hasErrors('institution')}" th:errors="*{institution}">Institution
+                <span class="alert-danger" th:if="${#fields.hasErrors('institution')}" th:errors="*{institution}">Institution
                         Error</span>
 
                 <div class="form-group form-group--buttons">
@@ -114,13 +113,13 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Ulica <input type="text" name="address" th:field="*{street}"/> </label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Street
+                            <span class="alert-danger" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Street
                         Error</span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Miasto <input type="text" name="city" th:field="*{city}"/> </label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City
+                            <span class="alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City
                         Error</span>
                         </div>
 
@@ -128,7 +127,7 @@
                             <label>
                                 Kod pocztowy <input type="text" name="postcode" th:field="*{zipCode}"/>
                             </label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">ZipCode
+                            <span class="alert-danger" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}">ZipCode
                         Error</span>
                         </div>
 
@@ -136,7 +135,7 @@
                             <label>
                                 Numer telefonu <input type="tel" name="phone" th:field="*{phoneNumber}"/>
                             </label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">PhoneNumber
+                            <span class="alert-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">PhoneNumber
                         Error</span>
                         </div>
                     </div>
@@ -145,13 +144,13 @@
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Data <input type="date" name="data" th:field="*{pickUpDate}"/></label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('pickUpDate')}" th:errors="*{pickUpDate}">PickUpDate
+                            <span class="alert-danger" th:if="${#fields.hasErrors('pickUpDate')}" th:errors="*{pickUpDate}">PickUpDate
                         Error</span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Godzina <input type="time" name="time" th:field="*{pickUpTime}"/> </label>
-                            <span class="alert-primary" th:if="${#fields.hasErrors('pickUpTime')}" th:errors="*{pickUpTime}">PickUpDate
+                            <span class="alert-danger" th:if="${#fields.hasErrors('pickUpTime')}" th:errors="*{pickUpTime}">PickUpDate
                         Error</span>
                         </div>
 
