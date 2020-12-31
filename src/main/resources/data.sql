@@ -11,8 +11,8 @@ insert into categories (name) values ('zabawki');
 insert into categories (name) values ('książki');
 insert into categories (name) values ('inne');
 
-insert into roles(role) value ('ROLE_ADMIN');
-insert into roles(role) value ('ROLE_USER');
+insert into roles(role) values ('ROLE_ADMIN');
+insert into roles(role) values ('ROLE_USER');
 
 
 insert into users(email, first_name, last_name, password, enabled) values ('szymek.fafrowicz@gmail.com', 'Szymon', 'Fąfrowicz','$2a$10$lEVSYk0LdQgKViAzQLf45OtX4zB9s5UYgjIzAm..G9cnE5vp4Oro6', true);

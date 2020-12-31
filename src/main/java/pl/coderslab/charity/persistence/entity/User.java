@@ -6,7 +6,6 @@ import pl.coderslab.charity.validation.ValidEmail;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Getter
@@ -30,6 +29,7 @@ public class User {
     private String lastName;
 
     @NotBlank
+    @Column(nullable = false)
     private String password;
 
     private int enabled;

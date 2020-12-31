@@ -10,7 +10,6 @@ import pl.coderslab.charity.persistence.dao.UserRepository;
 import pl.coderslab.charity.persistence.entity.Role;
 import pl.coderslab.charity.persistence.entity.User;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +21,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     RoleRepository roleRepository;
     PasswordEncoder passwordEncoder;
+
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
