@@ -5,32 +5,33 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.coderslab.charity.persistence.entity.Role;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
+@ActiveProfiles("test")
 @DataJpaTest
+
 public class RoleRepositoryTest {
 
     @Autowired
-    TestEntityManager entityManager;
+   private TestEntityManager entityManager;
+
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Test
-    public void shouldFindByName_returnRole() {
+    public void shouldFindByName_returnRoleUser() {
         //given
         Role role = new Role();
         role.setName("ROLE_USER");
-//        entityManager.persist(role);
+        entityManager.persist(role);
         //when
         Role result = roleRepository.findByName("ROLE_USER");
-        List<Role> all = roleRepository.findAll();
         //then
-        assertEquals(result.getName(), role.getName());
+        assertEquals(result, role);
     }
 }
