@@ -12,5 +12,5 @@ public interface DonationService {
 
     int sumOfReceivedBags();
 
-    Object sumOfDonations();
+    int sumOfDonations();
 }
