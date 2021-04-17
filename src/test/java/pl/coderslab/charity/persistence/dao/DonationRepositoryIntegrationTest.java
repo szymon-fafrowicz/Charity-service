@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @DataJpaTest
-public class DonationRepositoryTest {
+public class DonationRepositoryIntegrationTest {
     @Autowired
     private TestEntityManager entityManager;
 

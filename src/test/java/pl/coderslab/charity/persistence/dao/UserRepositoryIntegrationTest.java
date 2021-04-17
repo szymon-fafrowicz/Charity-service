@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @DataJpaTest
-public class UserRepositoryTest {
+public class UserRepositoryIntegrationTest {
     @Autowired
     private TestEntityManager entityManager;
     @Autowired

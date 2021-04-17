@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 @ActiveProfiles("test")
 @DataJpaTest
 
-public class RoleRepositoryTest {
+public class RoleRepositoryIntegrationTest {
 
     @Autowired
    private TestEntityManager entityManager;

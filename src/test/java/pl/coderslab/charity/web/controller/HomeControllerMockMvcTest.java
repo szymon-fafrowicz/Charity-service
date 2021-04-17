@@ -17,12 +17,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = HomeController.class)
 public class HomeControllerMockMvcTest {
+    @Autowired
+    private MockMvc mockMvc;
+
     @MockBean
     private InstitutionService institutionService;
     @MockBean
     private DonationService donationService;
-    @Autowired
-    private MockMvc mockMvc;
+
 
     private final String PAGE_VIEW_NAME = "index";
     private final String MODEL_ATTRIBUTE_INSTITUTIONS = "institutions";
@@ -31,7 +33,7 @@ public class HomeControllerMockMvcTest {
 
     @Test
     public void test_home_action_return_index() throws Exception {
-        mockMvc.perform(get("/"))
+        this.mockMvc.perform(get("/"))
                 .andExpect(model().attributeExists(MODEL_ATTRIBUTE_SUM_OF_GIFTS))
                 .andExpect(model().attributeExists(MODEL_ATTRIBUTE_INSTITUTIONS))
                 .andExpect(model().attributeExists(MODEL_ATTRIBUTE_SUM_OF_BAGS))

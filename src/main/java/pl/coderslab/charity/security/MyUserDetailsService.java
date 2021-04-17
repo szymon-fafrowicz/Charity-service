@@ -18,11 +18,11 @@ import java.util.Set;
 
 @Service("userDetailsService")
 @Transactional
-public class SpringDataUserDetailsService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
     UserService userService;
 
     @Autowired
-    public SpringDataUserDetailsService(UserService userService) {
+    public MyUserDetailsService(UserService userService) {
         this.userService = userService;
     }
 

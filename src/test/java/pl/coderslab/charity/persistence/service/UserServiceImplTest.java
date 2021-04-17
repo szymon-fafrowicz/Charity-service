@@ -2,13 +2,12 @@ package pl.coderslab.charity.persistence.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import pl.coderslab.charity.persistence.dao.RoleRepository;
 import pl.coderslab.charity.persistence.dao.UserRepository;
 import pl.coderslab.charity.persistence.entity.Role;
@@ -21,17 +20,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 @ActiveProfiles("test")
 public class UserServiceImplTest {
 
-    @Mock
+    @MockBean
     UserRepository userRepository;
-    @Mock
+    @MockBean
     RoleRepository roleRepository;
-    @Mock
+    @MockBean
     PasswordEncoder passwordEncoder;
-    @InjectMocks
+    @Autowired
     private UserServiceImpl userService;
 
 
@@ -49,6 +49,7 @@ public class UserServiceImplTest {
         //then
         assertEquals(user1.getEmail(), result.getEmail());
     }
+
     @Test
     public void whenSaveUser_ThenIsSaved() {
         //given
@@ -63,6 +64,6 @@ public class UserServiceImplTest {
         //when
         userService.registerNewUser(user1);
         //then
-        assertNotEquals( "haslo", user1.getPassword());
+        assertNotEquals("haslo", user1.getPassword());
     }
 }
